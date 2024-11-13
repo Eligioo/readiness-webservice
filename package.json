@@ -1,0 +1,19 @@
+{
+  "name": "webservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/redis": "^6.1.1",
+    "@types/node": "^18.17.15",
+    "fastify": "^4.23.0",
+    "pino": "^8.15.1",
+    "pino-pretty": "^10.2.0",
+    "typescript": "^5.2.2"
+  }
+}
