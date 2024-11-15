@@ -11,12 +11,8 @@ export async function info(req: FastifyRequest, res: FastifyReply) {
     const consensus = await rpc('consensus', []);
     const validatorFile = await fetch('https://v2.nimiqwatch.com/api/v2/validators');
     let validators = await validatorFile.json();
-    let totalStake = 0;
+    let totalStake = await (await fetch('https://v2.nimiqwatch.com/api/v2/total-prestake')).json();
     validators = validators.sort((a: any, b: any) => b.delegatedStake - a.delegatedStake);
-
-    validators.forEach((validator: any) => {
-        totalStake += validator.delegatedStake + validator.deposit;
-    })
 
     for await (const validator of validators) {
         validator.portion = (validator.delegatedStake + validator.deposit) / totalStake * 100;
